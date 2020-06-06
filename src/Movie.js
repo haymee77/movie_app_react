@@ -3,20 +3,19 @@ import PropTypes from 'prop-types';
 
 function Movie({ id, title, summary, poster, rating, year }) {
   return (
-    <div>
-      <h3>{title}</h3>
-      <img src={poster} alt={title} />
+    <div class='movie'>
+      <img src={poster} alt={title} title={title} />
+      <div class='movie__data'>
+        <h3 class='movie__title'>{title}</h3>
+        <h5 class='movie__year'>{year}</h5>
+        <p class='movie__summary'>{summary}</p>
+      </div>
     </div>
   );
 }
 
 Movie.propTypes = {
-  id: PropTypes.number.isRequired,
   title: PropTypes.string.isRequired,
-  summary: PropTypes.string.isRequired,
-  poster: PropTypes.string.isRequired,
-  rating: PropTypes.number.isRequired,
-  year: PropTypes.number.isRequired,
 };
 
 export default Movie;

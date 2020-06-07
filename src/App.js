@@ -13,7 +13,7 @@ class App extends React.Component {
       data: {
         data: { movies },
       },
-    } = await axios.get('https://yts.mx/api/v2/list_movies.json?sort_by=rating&order_by=desc');
+    } = await axios.get('https://yts.mx/api/v2/list_movies.json?sort_by=date_added&order_by=desc');
     this.setState({ movies, isLoading: false });
   };
   componentDidMount() {
@@ -22,13 +22,13 @@ class App extends React.Component {
   render() {
     const { movies, isLoading } = this.state;
     return (
-      <section class='container'>
+      <section className='container'>
         {isLoading ? (
-          <div class='loader'>
-            <span class='loader__text'>Loading...</span>
+          <div className='loader'>
+            <span className='loader__text'>Loading...</span>
           </div>
         ) : (
-          <div class='movies'>
+          <div className='movies'>
             {movies.map((movie) => {
               return (
                 <Movie
@@ -39,6 +39,7 @@ class App extends React.Component {
                   poster={movie.medium_cover_image}
                   rating={movie.rating}
                   year={movie.year}
+                  genres={movie.genres}
                 />
               );
             })}
